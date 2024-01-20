@@ -1,19 +1,16 @@
 class Node:
-    def __init__(self, index, depth):
+    def __init__(self, index = 0, depth = 0):
         self.index = index;
         self.depth = depth;
-        self.children = [];
         self.parent = None;
         
 class Tree:
     def __init__(self, size):
         self.size = size
         self.max_depth = 0
-        self.root = None
         self.deepest_leaf = None
-        self.nodes = [Node(i, 0) for i in range(size)]
-        if size > 0:
-            self.root = self.nodes[0];
+        self.nodes = [Node() for i in range(size)]
+        self.root = self.nodes[0];
         
 
 filename = "alg3-data.txt"
@@ -31,7 +28,6 @@ for i in range(1, n):
     pi = int(next(f))
     pnd = tr.nodes[pi]
     nd.parent = pnd
-    pnd.children.append(nd)
     nd.depth = pnd.depth + 1
 
     if nd.depth > tr.max_depth:

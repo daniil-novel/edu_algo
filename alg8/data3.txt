@@ -1,0 +1,47 @@
+40 13 33
+7 31
+30 32
+27 15
+32 23
+27 20
+2 21
+33 37
+9 36
+14 34
+25 18
+38 2
+29 4
+30 5
+ask 40 13
+ask 37 39
+ask 18 11
+ask 21 19
+ask 6 32
+ask 34 8
+ask 5 21
+ask 12 2
+ask 39 13
+ask 17 6
+ask 25 10
+ask 19 28
+ask 16 35
+ask 2 3
+ask 40 8
+ask 36 19
+ask 11 28
+ask 9 38
+ask 20 25
+ask 6 39
+ask 27 39
+ask 34 29
+ask 37 28
+ask 37 13
+ask 2 4
+ask 19 19
+ask 33 40
+ask 8 10
+ask 30 24
+ask 22 25
+ask 34 20
+ask 9 20
+ask 22 1

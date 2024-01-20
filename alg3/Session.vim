@@ -186,7 +186,7 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd ~/alg/alg3/dataGenerator.py
-edit alg3-treev2.cpp
+edit alg3-notreev2.cpp
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -196,6 +196,14 @@ wincmd _ | wincmd |
 vsplit
 2wincmd h
 wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -206,11 +214,17 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 67 + 86) / 173)
-exe 'vert 2resize ' . ((&columns * 59 + 86) / 173)
-exe 'vert 3resize ' . ((&columns * 45 + 86) / 173)
+exe 'vert 1resize ' . ((&columns * 71 + 86) / 173)
+exe '2resize ' . ((&lines * 9 + 20) / 41)
+exe 'vert 2resize ' . ((&columns * 1 + 86) / 173)
+exe '3resize ' . ((&lines * 29 + 20) / 41)
+exe 'vert 3resize ' . ((&columns * 1 + 86) / 173)
+exe '4resize ' . ((&lines * 20 + 20) / 41)
+exe 'vert 4resize ' . ((&columns * 99 + 86) / 173)
+exe '5resize ' . ((&lines * 18 + 20) / 41)
+exe 'vert 5resize ' . ((&columns * 99 + 86) / 173)
 argglobal
-balt alg3-notreev2.cpp
+balt alg3-notree.cpp
 lnoremap <buffer> " Э
 lnoremap <buffer> # №
 lnoremap <buffer> $ ;
@@ -390,7 +404,7 @@ setlocal modeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
 set number
-setlocal nonumber
+setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=ccomplete#Complete
 setlocal path=
@@ -444,16 +458,16 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 37 - ((14 * winheight(0) + 20) / 40)
+let s:l = 1 - ((0 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 37
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
-if bufexists("alg3-tree.py") | buffer alg3-tree.py | else | edit alg3-tree.py | endif
-balt alg3-notree.py
+if bufexists("alg4-data.txt") | buffer alg4-data.txt | else | edit alg4-data.txt | endif
+balt alg4-data2.txt
 lnoremap <buffer> " Э
 lnoremap <buffer> # №
 lnoremap <buffer> $ ;
@@ -529,10 +543,6 @@ lnoremap <buffer> z я
 lnoremap <buffer> { Х
 lnoremap <buffer> } Ъ
 lnoremap <buffer> ~ Ё
-iabbr <buffer> fork for k in range():F)i
-iabbr <buffer> forj for j in range():F)i
-iabbr <buffer> fori for i in range():F)i
-iabbr <buffer> pr print()i
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=russian-jcukenwin
@@ -547,12 +557,12 @@ setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
 setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,!^F,o,O,e
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=b:#,fb:-
-setlocal commentstring=#\ %s
+setlocal comments=fb:-,fb:*,n:>
+setlocal commentstring=
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -563,14 +573,14 @@ setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
 setlocal cursorlineopt=both
-setlocal define=^\\s*\\(def\\|class\\)
+setlocal define=
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'python'
-setlocal filetype=python
+if &filetype != 'text'
+setlocal filetype=text
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -590,13 +600,13 @@ setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
 setlocal imsearch=0
-setlocal include=^\\s*\\(from\\|import\\)
-setlocal includeexpr=substitute(substitute(substitute(v:fname,b:grandparent_match,b:grandparent_sub,''),b:parent_match,b:parent_sub,''),b:child_match,b:child_sub,'g')
-setlocal indentexpr=GetPythonIndent(v:lnum)
-setlocal indentkeys=0{,0},0),0],:,!^F,o,O,e,<:>,=elif,=except
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=python3\ -m\ pydoc
+setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
@@ -611,7 +621,7 @@ setlocal nrformats=bin,octal,hex
 set number
 setlocal number
 setlocal numberwidth=4
-setlocal omnifunc=python3complete#Complete
+setlocal omnifunc=
 setlocal path=
 setlocal nopreserveindent
 setlocal nopreviewwindow
@@ -635,13 +645,13 @@ setlocal spellfile=
 setlocal spelllang=ru_yo,en_us
 setlocal spelloptions=
 setlocal statusline=
-setlocal suffixesadd=.py
+setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
-if &syntax != 'python'
-setlocal syntax=python
+if &syntax != 'text'
+setlocal syntax=text
 endif
-setlocal tabstop=4
+setlocal tabstop=8
 setlocal tagcase=
 setlocal tagfunc=
 setlocal tags=
@@ -663,15 +673,258 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 37 - ((24 * winheight(0) + 20) / 40)
+let s:l = 8 - ((7 * winheight(0) + 4) / 9)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 37
-normal! 031|
+keepjumps 8
+normal! 07|
 wincmd w
 argglobal
-if bufexists("alg3-notree.py") | buffer alg3-notree.py | else | edit alg3-notree.py | endif
+if bufexists("../alg4/alg4.cpp") | buffer ../alg4/alg4.cpp | else | edit ../alg4/alg4.cpp | endif
+balt alg4-data.txt
+lnoremap <buffer> " Э
+lnoremap <buffer> # №
+lnoremap <buffer> $ ;
+lnoremap <buffer> & ?
+lnoremap <buffer> ' э
+lnoremap <buffer> , б
+lnoremap <buffer> . ю
+lnoremap <buffer> / .
+lnoremap <buffer> : Ж
+lnoremap <buffer> ; ж
+lnoremap <buffer> < Б
+lnoremap <buffer> > Ю
+lnoremap <buffer> ? ,
+lnoremap <buffer> @ "
+lnoremap <buffer> A Ф
+lnoremap <buffer> B И
+lnoremap <buffer> C С
+lnoremap <buffer> D В
+lnoremap <buffer> E У
+lnoremap <buffer> F А
+lnoremap <buffer> G П
+lnoremap <buffer> H Р
+lnoremap <buffer> I Ш
+lnoremap <buffer> J О
+lnoremap <buffer> K Л
+lnoremap <buffer> L Д
+lnoremap <buffer> M Ь
+lnoremap <buffer> N Т
+lnoremap <buffer> O Щ
+lnoremap <buffer> P З
+lnoremap <buffer> Q Й
+lnoremap <buffer> R К
+lnoremap <buffer> S Ы
+lnoremap <buffer> T Е
+lnoremap <buffer> U Г
+lnoremap <buffer> V М
+lnoremap <buffer> W Ц
+lnoremap <buffer> X Ч
+lnoremap <buffer> Y Н
+lnoremap <buffer> Z Я
+lnoremap <buffer> [ х
+lnoremap <buffer> ] ъ
+lnoremap <buffer> ^ :
+lnoremap <buffer> ` ё
+lnoremap <buffer> a ф
+lnoremap <buffer> b и
+lnoremap <buffer> c с
+lnoremap <buffer> d в
+lnoremap <buffer> e у
+lnoremap <buffer> f а
+lnoremap <buffer> g п
+let s:cpo_save=&cpo
+set cpo&vim
+lnoremap <buffer> h р
+lnoremap <buffer> i ш
+lnoremap <buffer> j о
+lnoremap <buffer> k л
+lnoremap <buffer> l д
+lnoremap <buffer> m ь
+lnoremap <buffer> n т
+lnoremap <buffer> o щ
+lnoremap <buffer> p з
+lnoremap <buffer> q й
+lnoremap <buffer> r к
+lnoremap <buffer> s ы
+lnoremap <buffer> t е
+lnoremap <buffer> u г
+lnoremap <buffer> v м
+lnoremap <buffer> w ц
+lnoremap <buffer> x ч
+lnoremap <buffer> y н
+lnoremap <buffer> z я
+lnoremap <buffer> { Х
+lnoremap <buffer> } Ъ
+lnoremap <buffer> ~ Ё
+iabbr <buffer> ci cin >> x;Fxs
+iabbr <buffer> coe cout << x << endl;Fxs
+iabbr <buffer> cod cout << x << ' ';Fxs
+iabbr <buffer> co cout << x;Fxs
+iabbr <buffer> #I #include <iostream>using namespace std;int main() {}O
+iabbr <buffer> fc char f() {}2k$F)i
+iabbr <buffer> fl long f() {}2k$F)i
+iabbr <buffer> fi int f() {}2k$F)i
+iabbr <buffer> fv void f() {}2k$F)i
+iabbr <buffer> }} {}kI	
+iabbr <buffer> ifel if() {} else {}4k$F)i
+iabbr <buffer> iff if() {}2k$F)i
+iabbr <buffer> fork for(int k = 0; k < _; k++) F_s
+iabbr <buffer> forj for(int j = 0; j < _; j++) F_s
+iabbr <buffer> fori for(int i = 0; i < _; i++) F_s
+iabbr <buffer> prp printf("%p\n", _);F_s
+iabbr <buffer> prg printf("%g\n", _);F_s
+iabbr <buffer> prf printf("\n");fflush(stdout);kF\i
+iabbr <buffer> prs printf("%s\n", _);F_s
+iabbr <buffer> prc printf("%c\n", _);F_s
+iabbr <buffer> prl printf("%ld\n", _);F_s
+iabbr <buffer> pri printf("%d\n", _);F_s
+iabbr <buffer> prn printf("\n");F\i
+iabbr <buffer> pr printf("");<Left><Left><Left>
+iabbr <buffer> #m #include <math.h>
+iabbr <buffer> #l #include <stdlib.h>
+iabbr <buffer> #h #include <stdio.h>#include <stdlib.h>
+iabbr <buffer> #i #include <stdio.h>int main() {}O
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=russian-jcukenwin
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=^\\s*#\\s*define
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'cpp'
+setlocal filetype=cpp
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^\\s*#\\s*include
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=ccomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=ru_yo,en_us
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'cpp'
+setlocal syntax=cpp
+endif
+setlocal tabstop=8
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 28 - ((0 * winheight(0) + 14) / 29)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 28
+normal! 014|
+wincmd w
+argglobal
+if bufexists("alg3-treev2.py") | buffer alg3-treev2.py | else | edit alg3-treev2.py | endif
 balt alg3-tree.py
 lnoremap <buffer> " Э
 lnoremap <buffer> # №
@@ -882,32 +1135,263 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 23 - ((22 * winheight(0) + 20) / 40)
+let s:l = 18 - ((14 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
-normal! 0
+keepjumps 18
+normal! 018|
 wincmd w
-3wincmd w
-exe 'vert 1resize ' . ((&columns * 67 + 86) / 173)
-exe 'vert 2resize ' . ((&columns * 59 + 86) / 173)
-exe 'vert 3resize ' . ((&columns * 45 + 86) / 173)
+argglobal
+if bufexists("alg3-notreev2.py") | buffer alg3-notreev2.py | else | edit alg3-notreev2.py | endif
+balt alg3-notree.py
+lnoremap <buffer> " Э
+lnoremap <buffer> # №
+lnoremap <buffer> $ ;
+lnoremap <buffer> & ?
+lnoremap <buffer> ' э
+lnoremap <buffer> , б
+lnoremap <buffer> . ю
+lnoremap <buffer> / .
+lnoremap <buffer> : Ж
+lnoremap <buffer> ; ж
+lnoremap <buffer> < Б
+lnoremap <buffer> > Ю
+lnoremap <buffer> ? ,
+lnoremap <buffer> @ "
+lnoremap <buffer> A Ф
+lnoremap <buffer> B И
+lnoremap <buffer> C С
+lnoremap <buffer> D В
+lnoremap <buffer> E У
+lnoremap <buffer> F А
+lnoremap <buffer> G П
+lnoremap <buffer> H Р
+lnoremap <buffer> I Ш
+lnoremap <buffer> J О
+lnoremap <buffer> K Л
+lnoremap <buffer> L Д
+lnoremap <buffer> M Ь
+lnoremap <buffer> N Т
+lnoremap <buffer> O Щ
+lnoremap <buffer> P З
+lnoremap <buffer> Q Й
+lnoremap <buffer> R К
+lnoremap <buffer> S Ы
+lnoremap <buffer> T Е
+lnoremap <buffer> U Г
+lnoremap <buffer> V М
+lnoremap <buffer> W Ц
+lnoremap <buffer> X Ч
+lnoremap <buffer> Y Н
+lnoremap <buffer> Z Я
+lnoremap <buffer> [ х
+lnoremap <buffer> ] ъ
+lnoremap <buffer> ^ :
+lnoremap <buffer> ` ё
+lnoremap <buffer> a ф
+lnoremap <buffer> b и
+lnoremap <buffer> c с
+lnoremap <buffer> d в
+lnoremap <buffer> e у
+lnoremap <buffer> f а
+lnoremap <buffer> g п
+let s:cpo_save=&cpo
+set cpo&vim
+lnoremap <buffer> h р
+lnoremap <buffer> i ш
+lnoremap <buffer> j о
+lnoremap <buffer> k л
+lnoremap <buffer> l д
+lnoremap <buffer> m ь
+lnoremap <buffer> n т
+lnoremap <buffer> o щ
+lnoremap <buffer> p з
+lnoremap <buffer> q й
+lnoremap <buffer> r к
+lnoremap <buffer> s ы
+lnoremap <buffer> t е
+lnoremap <buffer> u г
+lnoremap <buffer> v м
+lnoremap <buffer> w ц
+lnoremap <buffer> x ч
+lnoremap <buffer> y н
+lnoremap <buffer> z я
+lnoremap <buffer> { Х
+lnoremap <buffer> } Ъ
+lnoremap <buffer> ~ Ё
+iabbr <buffer> fork for k in range():F)i
+iabbr <buffer> forj for j in range():F)i
+iabbr <buffer> fori for i in range():F)i
+iabbr <buffer> pr print()i
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=russian-jcukenwin
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=b:#,fb:-
+setlocal commentstring=#\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=^\\s*\\(def\\|class\\)
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^\\s*\\(from\\|import\\)
+setlocal includeexpr=substitute(substitute(substitute(v:fname,b:grandparent_match,b:grandparent_sub,''),b:parent_match,b:parent_sub,''),b:child_match,b:child_sub,'g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,<:>,=elif,=except
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=python3\ -m\ pydoc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=python3complete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=ru_yo,en_us
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 17 - ((10 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 17
+normal! 068|
+wincmd w
+5wincmd w
+exe 'vert 1resize ' . ((&columns * 71 + 86) / 173)
+exe '2resize ' . ((&lines * 9 + 20) / 41)
+exe 'vert 2resize ' . ((&columns * 1 + 86) / 173)
+exe '3resize ' . ((&lines * 29 + 20) / 41)
+exe 'vert 3resize ' . ((&columns * 1 + 86) / 173)
+exe '4resize ' . ((&lines * 20 + 20) / 41)
+exe 'vert 4resize ' . ((&columns * 99 + 86) / 173)
+exe '5resize ' . ((&lines * 18 + 20) / 41)
+exe 'vert 5resize ' . ((&columns * 99 + 86) / 173)
 tabnext 1
-badd +1 alg3-treev2.cpp
-badd +18 ~/alg/alg3/dataGenerator.py
-badd +20 alg3-notreev2.cpp
-badd +1 alg3-tree.py
-badd +20 alg3-notree.py
-badd +19 alg3-treev3.cpp
+badd +19 alg3-treev2.cpp
+badd +0 dataGenerator.py
+badd +0 alg3-notreev2.cpp
+badd +18 alg3-treev2.py
+badd +20 alg3-notreev2.py
+badd +45 alg3-treev4.cpp
 badd +32 ~/alg/alg2/dataGenerator.py
 badd +13 alg3-data.txt
 badd +27 alg3-tree.cpp
 badd +1 alg3-treev3
 badd +94973 alg3-data6.txt
 badd +55715 alg3-data8.txt
-badd +25 alg3-notree.cpp
+badd +43 alg3-notree.cpp
 badd +12 ~/alg/alg2/alg2v3.py
+badd +0 ../alg4/alg4.cpp
+badd +0 alg4-data.txt
+badd +7 alg4-data2.txt
+badd +1 alg3-tree.py
+badd +1 alg3-treev3.cpp
+badd +1 alg3-notree.py
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -920,7 +1404,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
