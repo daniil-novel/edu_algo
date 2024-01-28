@@ -1,47 +1,132 @@
-40 13 33
-7 31
-30 32
-27 15
-32 23
-27 20
-2 21
-33 37
-9 36
-14 34
-25 18
-38 2
-29 4
-30 5
-ask 40 13
-ask 37 39
-ask 18 11
-ask 21 19
-ask 6 32
-ask 34 8
-ask 5 21
-ask 12 2
-ask 39 13
-ask 17 6
-ask 25 10
-ask 19 28
-ask 16 35
-ask 2 3
-ask 40 8
-ask 36 19
-ask 11 28
-ask 9 38
-ask 20 25
-ask 6 39
-ask 27 39
-ask 34 29
-ask 37 28
-ask 37 13
-ask 2 4
-ask 19 19
-ask 33 40
-ask 8 10
-ask 30 24
-ask 22 25
-ask 34 20
-ask 9 20
-ask 22 1
+29 47 84
+15 21
+6 12
+25 29
+3 4
+10 9
+1 6
+24 2
+2 8
+8 24
+15 5
+18 4
+2 23
+2 20
+13 24
+15 20
+23 6
+7 22
+29 22
+7 25
+19 2
+23 24
+28 17
+17 23
+28 26
+9 22
+11 19
+10 23
+15 7
+8 29
+1 23
+7 12
+24 22
+21 8
+7 21
+13 25
+16 24
+4 7
+22 12
+3 11
+14 11
+29 27
+8 4
+10 16
+15 9
+8 25
+16 11
+1 22
+ask 9 13
+ask 18 12
+ask 13 26
+ask 24 18
+ask 21 18
+cut 15 21
+cut 6 12
+cut 25 29
+ask 15 6
+ask 19 1
+cut 3 4
+cut 10 9
+ask 27 7
+ask 13 29
+cut 1 6
+ask 16 23
+ask 15 29
+ask 6 19
+cut 24 2
+ask 5 5
+ask 17 3
+ask 21 13
+ask 27 12
+cut 2 8
+cut 8 24
+cut 15 5
+ask 16 6
+cut 18 4
+ask 12 5
+cut 2 23
+cut 2 20
+cut 13 24
+ask 12 28
+cut 15 20
+ask 7 7
+cut 23 6
+ask 27 23
+ask 18 19
+cut 7 22
+cut 29 22
+ask 13 22
+ask 20 2
+cut 7 25
+cut 19 2
+cut 23 24
+cut 28 17
+ask 10 11
+ask 22 28
+cut 17 23
+cut 28 26
+cut 9 22
+ask 4 21
+cut 11 19
+cut 10 23
+cut 15 7
+cut 8 29
+cut 1 23
+cut 7 12
+cut 24 22
+ask 29 25
+ask 25 22
+ask 10 3
+cut 21 8
+cut 7 21
+cut 13 25
+ask 5 4
+cut 16 24
+cut 4 7
+cut 22 12
+cut 3 11
+cut 14 11
+ask 2 9
+ask 22 4
+ask 14 21
+ask 29 8
+cut 29 27
+ask 18 2
+cut 8 4
+cut 10 16
+ask 16 25
+cut 15 9
+cut 8 25
+cut 16 11
+cut 1 22

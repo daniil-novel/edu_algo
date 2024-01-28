@@ -16,7 +16,7 @@ ostream& operator<<(ostream& os, const vector<T>& v) {
         os << t;
     }
 
-    return os << endl;
+    return os;
 }
 
 template<typename T>
@@ -25,7 +25,7 @@ ostream& operator<<(ostream& os, const vector<T*>& v) {
         os << *t;
     }
 
-    return os << endl;
+    return os;
 }
 
 struct Vertex;
@@ -66,13 +66,13 @@ struct Vertex {
         Component *cmpU = u.component;
         Component *cmpV = v.component;
 
-        cout << cmpU->vertex_ptrlist;
-        cout << cmpV->vertex_ptrlist;
+//        cout << cmpU->vertex_ptrlist;
+//        cout << cmpV->vertex_ptrlist;
 
         Component *cmp = Component::merge(cmpU, cmpV);
 
-        cout << cmp->vertex_ptrlist;
-        cout << "************************" << endl;
+//        cout << cmp->vertex_ptrlist;
+//        cout << "************************" << endl;
     }
 
     static void setVertexPtrlistComponent(VertexPtrlist& lst, Component *cmp) {
@@ -126,11 +126,11 @@ struct Command {
 };
 
 Commandlist commandInit() {
-    string filename = "data.txt";
+    string filename = "data8.txt";
     ifstream fin{filename};
 
     fin >> n_vertex >> m_edge >> k_operation;
-    cout << n_vertex << " " << m_edge << " " << k_operation << endl;
+//    cout << n_vertex << " " << m_edge << " " << k_operation << endl;
 
     for(int i = 0; i < m_edge; i++) {
         int ui, vi;
@@ -183,7 +183,7 @@ Answerlist execute(Commandlist& reversed_commandlist, VertexPtrlist& vertex_ptrl
 
 int main() {
     Commandlist reversed_commandlist = commandInit();
-    cout << reversed_commandlist;
+//    cout << reversed_commandlist;
 
     VertexPtrlist vertex_ptrlist = vertexInit();
     Answerlist answerlist = execute(reversed_commandlist, vertex_ptrlist);

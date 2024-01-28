@@ -1,151 +1,98 @@
-34 34 116
-27 30
-30 3
-11 5
-17 9
-23 23
-34 8
-6 3
-32 5
-17 29
-4 8
-3 17
-16 24
-24 25
-32 18
-22 28
-21 23
-30 12
-23 17
-13 18
-26 18
-5 20
-19 23
-16 5
-20 14
-21 12
-33 12
-3 11
-32 19
-16 17
-8 12
-14 8
-2 29
-29 27
-9 23
-ask 18 8
-ask 11 4
-ask 15 15
-ask 13 13
-ask 16 19
-ask 7 18
-ask 5 3
-ask 23 18
-ask 7 9
-ask 9 27
-ask 18 1
-ask 11 31
-ask 28 8
-ask 11 22
-ask 9 15
-ask 23 2
-ask 30 23
-ask 24 10
-ask 18 3
-ask 29 17
-ask 15 24
-ask 13 10
-ask 3 8
-ask 18 4
-ask 6 22
-ask 25 21
-ask 21 13
-ask 32 10
-ask 26 17
-ask 18 32
-ask 25 2
-ask 22 20
-ask 4 6
-ask 22 12
-ask 19 30
-ask 6 8
-ask 23 1
-ask 13 27
-ask 26 10
-ask 25 21
-ask 10 27
-ask 10 31
-ask 26 18
-ask 29 27
+49 22 75
+30 49
+36 4
+39 45
+14 34
+17 42
+4 5
+25 40
+21 15
+9 10
+2 7
+15 10
+13 25
+38 42
+42 9
+48 49
+45 29
+42 15
+3 35
+16 2
+48 3
+29 11
+16 11
+ask 24 21
+ask 9 13
+ask 38 31
+ask 37 30
+cut 30 49
+ask 41 11
+ask 1 47
+cut 36 4
+cut 39 45
+cut 14 34
+ask 4 3
+ask 15 11
+ask 31 19
+ask 12 13
+ask 39 47
+cut 17 42
+ask 35 16
+ask 13 40
 ask 22 23
-ask 9 23
-ask 10 24
-ask 2 23
-ask 13 34
-ask 28 29
-ask 17 34
-ask 5 29
-ask 7 9
-ask 18 11
-ask 20 33
-ask 12 25
-ask 7 20
-ask 27 14
-ask 32 34
-ask 8 34
-ask 16 1
-ask 14 18
-ask 18 23
-ask 34 6
-ask 26 16
-ask 31 24
-ask 19 22
-ask 14 32
-ask 25 2
-ask 27 8
-ask 25 16
-ask 12 6
-ask 20 10
-ask 20 23
-ask 12 19
-ask 21 26
-ask 27 18
-ask 23 17
-ask 18 16
-ask 2 18
-ask 25 19
-ask 15 1
-ask 5 14
-ask 3 28
-ask 32 19
-ask 13 14
-ask 1 26
-ask 12 22
-ask 29 1
-ask 3 18
-ask 13 5
-ask 2 10
-ask 25 15
-ask 20 31
-ask 5 17
-ask 20 21
-ask 30 1
-ask 14 13
-ask 28 13
-ask 11 7
-ask 20 13
-ask 30 16
-ask 9 22
-ask 4 9
-ask 30 17
-ask 28 23
-ask 26 33
-ask 18 27
-ask 22 31
-ask 20 24
-ask 16 26
-ask 12 6
-ask 22 13
-ask 17 25
-ask 25 20
-ask 1 9
+ask 36 49
+ask 44 39
+cut 4 5
+ask 12 36
+cut 25 40
+ask 32 20
+cut 21 15
+ask 30 45
+ask 28 2
+ask 38 46
+ask 7 2
+ask 37 24
+ask 23 40
+cut 9 10
+ask 32 4
+ask 39 34
+ask 49 26
+ask 8 13
+cut 2 7
+ask 8 18
+ask 21 31
+ask 39 47
+ask 28 37
+cut 15 10
+ask 9 5
+ask 22 42
+ask 19 21
+ask 16 37
+cut 13 25
+ask 24 12
+ask 14 14
+ask 34 20
+ask 44 48
+ask 8 24
+ask 28 6
+cut 38 42
+ask 6 49
+cut 42 9
+ask 30 30
+ask 3 26
+cut 48 49
+ask 20 45
+ask 5 22
+cut 45 29
+cut 42 15
+cut 3 35
+ask 43 9
+ask 38 21
+cut 16 2
+ask 7 49
+ask 3 36
+ask 4 11
+ask 24 31
+cut 48 3
+cut 29 11
+cut 16 11

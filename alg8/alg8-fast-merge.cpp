@@ -16,7 +16,7 @@ ostream& operator<<(ostream& os, const vector<T>& v) {
         os << t;
     }
 
-    return os << endl;
+    return os;
 }
 
 template<typename T>
@@ -25,7 +25,7 @@ ostream& operator<<(ostream& os, const vector<T*>& v) {
         os << *t;
     }
 
-    return os << endl;
+    return os;
 }
 
 struct Vertex;
@@ -50,24 +50,24 @@ struct Vertex {
         return os;
     }
 
-    Vertex *findRoot() {
-        Vertex *p;
+    Vertex *findRoot() const {
+        const Vertex *p;
         for(p = this; p != p->parent; p = p->parent); 
-        return p;
+        return const_cast<Vertex *>(p);
     }
 
-    static bool ask(Vertex *u, Vertex *v) {
+    static bool ask(const Vertex *u, const Vertex *v) {
         return u->findRoot() == v->findRoot();
     }
 
     static void addEdge(Vertex *u, Vertex *v) {
-        cout << u;
-        cout << v;
+//        cout << u;
+//        cout << v;
 
         Vertex *root = merge(u, v);
-
-        cout << root;
-        cout << "************************" << endl;
+//
+//        cout << root;
+//        cout << "************************" << endl;
     }
 
     static Vertex *merge(Vertex *u, Vertex *v) { 
@@ -103,11 +103,11 @@ struct Command {
 };
 
 Commandlist commandInit() {
-    string filename = "data.txt";
+    string filename = "data8.txt";
     ifstream fin{filename};
 
     fin >> n_vertex >> m_edge >> k_operation;
-    cout << n_vertex << " " << m_edge << " " << k_operation << endl;
+//    cout << n_vertex << " " << m_edge << " " << k_operation << endl;
 
     for(int i = 0; i < m_edge; i++) {
         int ui, vi;
@@ -160,11 +160,11 @@ Answerlist execute(Commandlist& reversed_commandlist, VertexPtrlist& vertex_ptrl
 
 int main() {
     Commandlist reversed_commandlist = commandInit();
-    cout << reversed_commandlist;
+//    cout << reversed_commandlist;
 
     VertexPtrlist vertex_ptrlist = vertexInit();
     Answerlist answerlist = execute(reversed_commandlist, vertex_ptrlist);
 
-    cout << answerlist;
+//    cout << answerlist;
 
 } 

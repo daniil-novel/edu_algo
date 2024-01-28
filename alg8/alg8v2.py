@@ -1,3 +1,5 @@
+n_vertex = 0
+
 class Component(list):
     def __init__(self, vertex):
         self.append(vertex)
@@ -32,11 +34,11 @@ class Vertex:
     @staticmethod
     def add_edge(u, v):
         cmpU, cmpV = u.component, v.component
-        print(cmpU)
-        print(cmpV)
+#        print(cmpU)
+#        print(cmpV)
         cmp = Component.merge(cmpU, cmpV)
-        print(cmp)
-        print("-------------------")
+#        print(cmp)
+#        print("-------------------")
     
     @staticmethod
     def ask(u, v):
@@ -62,10 +64,12 @@ def print_list(lst):
 
 
 def command_init():
-    filename = "data.txt"
+    global n_vertex
+
+    filename = "data8.txt"
     fin = open(filename, 'r')
     n_vertex, m_edge, k_operation = map(int, fin.readline().split())
-    print(n_vertex, m_edge, k_operation)
+#    print(n_vertex, m_edge, k_operation)
     
     for _ in range(m_edge):
         ui, vi = map(int, fin.readline().split())
@@ -79,7 +83,7 @@ def command_init():
     commands.reverse()
     return commands
 
-def vertex_init(n_vertex):
+def vertex_init():
     return [Vertex(vi) for vi in range(n_vertex + 1)]
 
 def execute(reversed_commandlist, vertex_list):
@@ -89,15 +93,16 @@ def execute(reversed_commandlist, vertex_list):
         if cmd.name == "cut":
             Vertex.add_edge(u, v)
         else:
-            anslst.append("YES\n" if Vertex.ask(u, v) else "NO\n")
+            anslst.append("YES" if Vertex.ask(u, v) else "NO")
     
     return reversed(anslst)
 
 if __name__ == "__main__":
     reversed_commandlist = command_init()
-    print_list(reversed_commandlist)
+#    print_list(reversed_commandlist)
 
-    vertex_list = vertex_init(reversed_commandlist[0].ui)
+    vertex_list = vertex_init()
+
     answerlist = execute(reversed_commandlist, vertex_list)
     print_list(answerlist)
 
