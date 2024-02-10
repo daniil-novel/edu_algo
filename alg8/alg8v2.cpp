@@ -126,7 +126,7 @@ struct Command {
 };
 
 Commandlist commandInit() {
-    string filename = "data8.txt";
+    string filename = "data1.txt";
     ifstream fin{filename};
 
     fin >> n_vertex >> m_edge >> k_operation;

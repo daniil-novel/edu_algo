@@ -31,11 +31,11 @@ nmap <silent>  :call Move_up()
 vmap <silent>  :m<Home>silent! <End>'<-2gv
 nnoremap  :call Comment()
 vnoremap  :call Comment()
+nmap \] 
 nnoremap \> Icin >> $a;$
 nnoremap \< Icout << $a << endl;$
 noremap \\c :echo getcurpos()
 nnoremap \\t i#TODOj
-nmap \] 
 vmap \] 
 nnoremap \[ gI//:s+////++e+
 nnoremap \Z 0xj0
@@ -78,9 +78,9 @@ nmap z/ 
 vmap z/ 
 nmap zX <M-Up>
 nmap zx <S-F11>
+nnoremap <C-_> :call Comment()
 xnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
-nnoremap <C-_> :call Comment()
 vnoremap <C-_> :call Comment()
 nmap <F15> \v
 nmap <silent> <C-Left> :call Move_hor(-1)
@@ -173,6 +173,8 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 set ttimeoutlen=100
 set wildignore=*.pyc
 set wildmenu
+set winminheight=0
+set winminwidth=0
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -196,11 +198,17 @@ wincmd _ | wincmd |
 vsplit
 wincmd _ | wincmd |
 vsplit
-2wincmd h
+wincmd _ | wincmd |
+vsplit
+wincmd _ | wincmd |
+vsplit
+4wincmd h
 wincmd w
 wincmd _ | wincmd |
 split
 1wincmd k
+wincmd w
+wincmd w
 wincmd w
 wincmd w
 let &splitbelow = s:save_splitbelow
@@ -212,12 +220,14 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 56 + 86) / 173)
-exe '2resize ' . ((&lines * 27 + 20) / 41)
-exe 'vert 2resize ' . ((&columns * 76 + 86) / 173)
-exe '3resize ' . ((&lines * 10 + 20) / 41)
-exe 'vert 3resize ' . ((&columns * 76 + 86) / 173)
-exe 'vert 4resize ' . ((&columns * 39 + 86) / 173)
+exe 'vert 1resize ' . ((&columns * 34 + 86) / 173)
+exe '2resize ' . ((&lines * 37 + 20) / 41)
+exe 'vert 2resize ' . ((&columns * 74 + 86) / 173)
+exe '3resize ' . ((&lines * 0 + 20) / 41)
+exe 'vert 3resize ' . ((&columns * 74 + 86) / 173)
+exe 'vert 4resize ' . ((&columns * 0 + 86) / 173)
+exe 'vert 5resize ' . ((&columns * 27 + 86) / 173)
+exe 'vert 6resize ' . ((&columns * 34 + 86) / 173)
 argglobal
 balt alg8v2.py
 lnoremap <buffer> " Э
@@ -696,12 +706,12 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 65 - ((15 * winheight(0) + 13) / 27)
+let s:l = 127 - ((21 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 65
-normal! 035|
+keepjumps 127
+normal! 09|
 wincmd w
 argglobal
 if bufexists("alg8-fast-merge.cpp") | buffer alg8-fast-merge.cpp | else | edit alg8-fast-merge.cpp | endif
@@ -939,16 +949,231 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 169 - ((7 * winheight(0) + 5) / 10)
+let s:l = 170
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 169
+keepjumps 170
 normal! 0
 wincmd w
 argglobal
 if bufexists("data8.txt") | buffer data8.txt | else | edit data8.txt | endif
-balt alg8v2.cpp
+balt data6.txt
+lnoremap <buffer> " Э
+lnoremap <buffer> # №
+lnoremap <buffer> $ ;
+lnoremap <buffer> & ?
+lnoremap <buffer> ' э
+lnoremap <buffer> , б
+lnoremap <buffer> . ю
+lnoremap <buffer> / .
+lnoremap <buffer> : Ж
+lnoremap <buffer> ; ж
+lnoremap <buffer> < Б
+lnoremap <buffer> > Ю
+lnoremap <buffer> ? ,
+lnoremap <buffer> @ "
+lnoremap <buffer> A Ф
+lnoremap <buffer> B И
+lnoremap <buffer> C С
+lnoremap <buffer> D В
+lnoremap <buffer> E У
+lnoremap <buffer> F А
+lnoremap <buffer> G П
+lnoremap <buffer> H Р
+lnoremap <buffer> I Ш
+lnoremap <buffer> J О
+lnoremap <buffer> K Л
+lnoremap <buffer> L Д
+lnoremap <buffer> M Ь
+lnoremap <buffer> N Т
+lnoremap <buffer> O Щ
+lnoremap <buffer> P З
+lnoremap <buffer> Q Й
+lnoremap <buffer> R К
+lnoremap <buffer> S Ы
+lnoremap <buffer> T Е
+lnoremap <buffer> U Г
+lnoremap <buffer> V М
+lnoremap <buffer> W Ц
+lnoremap <buffer> X Ч
+lnoremap <buffer> Y Н
+lnoremap <buffer> Z Я
+lnoremap <buffer> [ х
+lnoremap <buffer> ] ъ
+lnoremap <buffer> ^ :
+lnoremap <buffer> ` ё
+lnoremap <buffer> a ф
+lnoremap <buffer> b и
+lnoremap <buffer> c с
+lnoremap <buffer> d в
+lnoremap <buffer> e у
+lnoremap <buffer> f а
+lnoremap <buffer> g п
+let s:cpo_save=&cpo
+set cpo&vim
+lnoremap <buffer> h р
+lnoremap <buffer> i ш
+lnoremap <buffer> j о
+lnoremap <buffer> k л
+lnoremap <buffer> l д
+lnoremap <buffer> m ь
+lnoremap <buffer> n т
+lnoremap <buffer> o щ
+lnoremap <buffer> p з
+lnoremap <buffer> q й
+lnoremap <buffer> r к
+lnoremap <buffer> s ы
+lnoremap <buffer> t е
+lnoremap <buffer> u г
+lnoremap <buffer> v м
+lnoremap <buffer> w ц
+lnoremap <buffer> x ч
+lnoremap <buffer> y н
+lnoremap <buffer> z я
+lnoremap <buffer> { Х
+lnoremap <buffer> } Ъ
+lnoremap <buffer> ~ Ё
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=russian-jcukenwin
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=fb:-,fb:*,n:>
+setlocal commentstring=
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'text'
+setlocal filetype=text
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=ru_yo,en_us
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'text'
+setlocal syntax=text
+endif
+setlocal tabstop=8
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 22 - ((21 * winheight(0) + 19) / 38)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 22
+normal! 013|
+wincmd w
+argglobal
+if bufexists("data6.txt") | buffer data6.txt | else | edit data6.txt | endif
+balt data4.txt
 lnoremap <buffer> " Э
 lnoremap <buffer> # №
 lnoremap <buffer> $ ;
@@ -1159,14 +1384,232 @@ if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
-normal! 014|
+normal! 016|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 56 + 86) / 173)
-exe '2resize ' . ((&lines * 27 + 20) / 41)
-exe 'vert 2resize ' . ((&columns * 76 + 86) / 173)
-exe '3resize ' . ((&lines * 10 + 20) / 41)
-exe 'vert 3resize ' . ((&columns * 76 + 86) / 173)
-exe 'vert 4resize ' . ((&columns * 39 + 86) / 173)
+argglobal
+if bufexists("data4.txt") | buffer data4.txt | else | edit data4.txt | endif
+balt data6.txt
+lnoremap <buffer> " Э
+lnoremap <buffer> # №
+lnoremap <buffer> $ ;
+lnoremap <buffer> & ?
+lnoremap <buffer> ' э
+lnoremap <buffer> , б
+lnoremap <buffer> . ю
+lnoremap <buffer> / .
+lnoremap <buffer> : Ж
+lnoremap <buffer> ; ж
+lnoremap <buffer> < Б
+lnoremap <buffer> > Ю
+lnoremap <buffer> ? ,
+lnoremap <buffer> @ "
+lnoremap <buffer> A Ф
+lnoremap <buffer> B И
+lnoremap <buffer> C С
+lnoremap <buffer> D В
+lnoremap <buffer> E У
+lnoremap <buffer> F А
+lnoremap <buffer> G П
+lnoremap <buffer> H Р
+lnoremap <buffer> I Ш
+lnoremap <buffer> J О
+lnoremap <buffer> K Л
+lnoremap <buffer> L Д
+lnoremap <buffer> M Ь
+lnoremap <buffer> N Т
+lnoremap <buffer> O Щ
+lnoremap <buffer> P З
+lnoremap <buffer> Q Й
+lnoremap <buffer> R К
+lnoremap <buffer> S Ы
+lnoremap <buffer> T Е
+lnoremap <buffer> U Г
+lnoremap <buffer> V М
+lnoremap <buffer> W Ц
+lnoremap <buffer> X Ч
+lnoremap <buffer> Y Н
+lnoremap <buffer> Z Я
+lnoremap <buffer> [ х
+lnoremap <buffer> ] ъ
+lnoremap <buffer> ^ :
+lnoremap <buffer> ` ё
+lnoremap <buffer> a ф
+lnoremap <buffer> b и
+lnoremap <buffer> c с
+lnoremap <buffer> d в
+lnoremap <buffer> e у
+lnoremap <buffer> f а
+lnoremap <buffer> g п
+let s:cpo_save=&cpo
+set cpo&vim
+lnoremap <buffer> h р
+lnoremap <buffer> i ш
+lnoremap <buffer> j о
+lnoremap <buffer> k л
+lnoremap <buffer> l д
+lnoremap <buffer> m ь
+lnoremap <buffer> n т
+lnoremap <buffer> o щ
+lnoremap <buffer> p з
+lnoremap <buffer> q й
+lnoremap <buffer> r к
+lnoremap <buffer> s ы
+lnoremap <buffer> t е
+lnoremap <buffer> u г
+lnoremap <buffer> v м
+lnoremap <buffer> w ц
+lnoremap <buffer> x ч
+lnoremap <buffer> y н
+lnoremap <buffer> z я
+lnoremap <buffer> { Х
+lnoremap <buffer> } Ъ
+lnoremap <buffer> ~ Ё
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=russian-jcukenwin
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=fb:-,fb:*,n:>
+setlocal commentstring=
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'text'
+setlocal filetype=text
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal listchars=
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal showbreak=
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=ru_yo,en_us
+setlocal spelloptions=
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'text'
+setlocal syntax=text
+endif
+setlocal tabstop=8
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal thesaurusfunc=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal virtualedit=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 34 + 86) / 173)
+exe '2resize ' . ((&lines * 37 + 20) / 41)
+exe 'vert 2resize ' . ((&columns * 74 + 86) / 173)
+exe '3resize ' . ((&lines * 0 + 20) / 41)
+exe 'vert 3resize ' . ((&columns * 74 + 86) / 173)
+exe 'vert 4resize ' . ((&columns * 0 + 86) / 173)
+exe 'vert 5resize ' . ((&columns * 27 + 86) / 173)
+exe 'vert 6resize ' . ((&columns * 34 + 86) / 173)
 tabnext
 edit alg8v2.cpp
 let s:save_splitbelow = &splitbelow
@@ -1174,28 +1617,7 @@ let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-wincmd _ | wincmd |
-vsplit
-wincmd _ | wincmd |
-vsplit
-wincmd _ | wincmd |
-vsplit
-4wincmd h
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
-wincmd _ | wincmd |
-vsplit
 1wincmd h
-wincmd w
-wincmd w
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -1206,19 +1628,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 53 + 86) / 173)
-exe '2resize ' . ((&lines * 31 + 20) / 41)
-exe 'vert 2resize ' . ((&columns * 88 + 86) / 173)
-exe '3resize ' . ((&lines * 6 + 20) / 41)
-exe 'vert 3resize ' . ((&columns * 88 + 86) / 173)
-exe '4resize ' . ((&lines * 19 + 20) / 41)
-exe 'vert 4resize ' . ((&columns * 11 + 86) / 173)
-exe '5resize ' . ((&lines * 18 + 20) / 41)
-exe 'vert 5resize ' . ((&columns * 3 + 86) / 173)
-exe '6resize ' . ((&lines * 18 + 20) / 41)
-exe 'vert 6resize ' . ((&columns * 7 + 86) / 173)
-exe 'vert 7resize ' . ((&columns * 1 + 86) / 173)
-exe 'vert 8resize ' . ((&columns * 16 + 86) / 173)
+exe 'vert 1resize ' . ((&columns * 91 + 86) / 173)
+exe 'vert 2resize ' . ((&columns * 81 + 86) / 173)
 argglobal
 balt alg8-fast-merge-nostruct.cpp
 lnoremap <buffer> " Э
@@ -1454,11 +1865,11 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 105 - ((2 * winheight(0) + 19) / 38)
+let s:l = 161 - ((35 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 105
+keepjumps 161
 normal! 0
 wincmd w
 argglobal
@@ -1697,1365 +2108,32 @@ setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 110 - ((12 * winheight(0) + 15) / 31)
+let s:l = 113 - ((23 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 110
+keepjumps 113
 normal! 0
 wincmd w
-argglobal
-if bufexists("alg8-fast-merge-nostruct.cpp") | buffer alg8-fast-merge-nostruct.cpp | else | edit alg8-fast-merge-nostruct.cpp | endif
-balt alg8v2.cpp
-lnoremap <buffer> " Э
-lnoremap <buffer> # №
-lnoremap <buffer> $ ;
-lnoremap <buffer> & ?
-lnoremap <buffer> ' э
-lnoremap <buffer> , б
-lnoremap <buffer> . ю
-lnoremap <buffer> / .
-lnoremap <buffer> : Ж
-lnoremap <buffer> ; ж
-lnoremap <buffer> < Б
-lnoremap <buffer> > Ю
-lnoremap <buffer> ? ,
-lnoremap <buffer> @ "
-lnoremap <buffer> A Ф
-lnoremap <buffer> B И
-lnoremap <buffer> C С
-lnoremap <buffer> D В
-lnoremap <buffer> E У
-lnoremap <buffer> F А
-lnoremap <buffer> G П
-lnoremap <buffer> H Р
-lnoremap <buffer> I Ш
-lnoremap <buffer> J О
-lnoremap <buffer> K Л
-lnoremap <buffer> L Д
-lnoremap <buffer> M Ь
-lnoremap <buffer> N Т
-lnoremap <buffer> O Щ
-lnoremap <buffer> P З
-lnoremap <buffer> Q Й
-lnoremap <buffer> R К
-lnoremap <buffer> S Ы
-lnoremap <buffer> T Е
-lnoremap <buffer> U Г
-lnoremap <buffer> V М
-lnoremap <buffer> W Ц
-lnoremap <buffer> X Ч
-lnoremap <buffer> Y Н
-lnoremap <buffer> Z Я
-lnoremap <buffer> [ х
-lnoremap <buffer> ] ъ
-lnoremap <buffer> ^ :
-lnoremap <buffer> ` ё
-lnoremap <buffer> a ф
-lnoremap <buffer> b и
-lnoremap <buffer> c с
-lnoremap <buffer> d в
-lnoremap <buffer> e у
-lnoremap <buffer> f а
-lnoremap <buffer> g п
-let s:cpo_save=&cpo
-set cpo&vim
-lnoremap <buffer> h р
-lnoremap <buffer> i ш
-lnoremap <buffer> j о
-lnoremap <buffer> k л
-lnoremap <buffer> l д
-lnoremap <buffer> m ь
-lnoremap <buffer> n т
-lnoremap <buffer> o щ
-lnoremap <buffer> p з
-lnoremap <buffer> q й
-lnoremap <buffer> r к
-lnoremap <buffer> s ы
-lnoremap <buffer> t е
-lnoremap <buffer> u г
-lnoremap <buffer> v м
-lnoremap <buffer> w ц
-lnoremap <buffer> x ч
-lnoremap <buffer> y н
-lnoremap <buffer> z я
-lnoremap <buffer> { Х
-lnoremap <buffer> } Ъ
-lnoremap <buffer> ~ Ё
-iabbr <buffer> ci cin >> x;Fxs
-iabbr <buffer> coe cout << x << endl;Fxs
-iabbr <buffer> cod cout << x << ' ';Fxs
-iabbr <buffer> co cout << x;Fxs
-iabbr <buffer> #I #include <iostream>using namespace std;int main() {}O
-iabbr <buffer> fc char f() {}2k$F)i
-iabbr <buffer> fl long f() {}2k$F)i
-iabbr <buffer> fi int f() {}2k$F)i
-iabbr <buffer> fv void f() {}2k$F)i
-iabbr <buffer> }} {}kI	
-iabbr <buffer> ifel if() {} else {}4k$F)i
-iabbr <buffer> iff if() {}2k$F)i
-iabbr <buffer> fork for(int k = 0; k < _; k++) F_s
-iabbr <buffer> forj for(int j = 0; j < _; j++) F_s
-iabbr <buffer> fori for(int i = 0; i < _; i++) F_s
-iabbr <buffer> prp printf("%p\n", _);F_s
-iabbr <buffer> prg printf("%g\n", _);F_s
-iabbr <buffer> prf printf("\n");fflush(stdout);kF\i
-iabbr <buffer> prs printf("%s\n", _);F_s
-iabbr <buffer> prc printf("%c\n", _);F_s
-iabbr <buffer> prl printf("%ld\n", _);F_s
-iabbr <buffer> pri printf("%d\n", _);F_s
-iabbr <buffer> prn printf("\n");F\i
-iabbr <buffer> pr printf("");<Left><Left><Left>
-iabbr <buffer> #m #include <math.h>
-iabbr <buffer> #l #include <stdlib.h>
-iabbr <buffer> #h #include <stdio.h>#include <stdlib.h>
-iabbr <buffer> #i #include <stdio.h>int main() {}O
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=russian-jcukenwin
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal cindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=^\\s*#\\s*define
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'cpp'
-setlocal filetype=cpp
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=^\\s*#\\s*include
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=ccomplete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=ru_yo,en_us
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'cpp'
-setlocal syntax=cpp
-endif
-setlocal tabstop=8
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 20 - ((4 * winheight(0) + 3) / 6)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 20
-normal! 016|
-wincmd w
-argglobal
-if bufexists("dataGeneratorv2.py") | buffer dataGeneratorv2.py | else | edit dataGeneratorv2.py | endif
-balt dataGenerator.py
-lnoremap <buffer> " Э
-lnoremap <buffer> # №
-lnoremap <buffer> $ ;
-lnoremap <buffer> & ?
-lnoremap <buffer> ' э
-lnoremap <buffer> , б
-lnoremap <buffer> . ю
-lnoremap <buffer> / .
-lnoremap <buffer> : Ж
-lnoremap <buffer> ; ж
-lnoremap <buffer> < Б
-lnoremap <buffer> > Ю
-lnoremap <buffer> ? ,
-lnoremap <buffer> @ "
-lnoremap <buffer> A Ф
-lnoremap <buffer> B И
-lnoremap <buffer> C С
-lnoremap <buffer> D В
-lnoremap <buffer> E У
-lnoremap <buffer> F А
-lnoremap <buffer> G П
-lnoremap <buffer> H Р
-lnoremap <buffer> I Ш
-lnoremap <buffer> J О
-lnoremap <buffer> K Л
-lnoremap <buffer> L Д
-lnoremap <buffer> M Ь
-lnoremap <buffer> N Т
-lnoremap <buffer> O Щ
-lnoremap <buffer> P З
-lnoremap <buffer> Q Й
-lnoremap <buffer> R К
-lnoremap <buffer> S Ы
-lnoremap <buffer> T Е
-lnoremap <buffer> U Г
-lnoremap <buffer> V М
-lnoremap <buffer> W Ц
-lnoremap <buffer> X Ч
-lnoremap <buffer> Y Н
-lnoremap <buffer> Z Я
-lnoremap <buffer> [ х
-lnoremap <buffer> ] ъ
-lnoremap <buffer> ^ :
-lnoremap <buffer> ` ё
-lnoremap <buffer> a ф
-lnoremap <buffer> b и
-lnoremap <buffer> c с
-lnoremap <buffer> d в
-lnoremap <buffer> e у
-lnoremap <buffer> f а
-lnoremap <buffer> g п
-let s:cpo_save=&cpo
-set cpo&vim
-lnoremap <buffer> h р
-lnoremap <buffer> i ш
-lnoremap <buffer> j о
-lnoremap <buffer> k л
-lnoremap <buffer> l д
-lnoremap <buffer> m ь
-lnoremap <buffer> n т
-lnoremap <buffer> o щ
-lnoremap <buffer> p з
-lnoremap <buffer> q й
-lnoremap <buffer> r к
-lnoremap <buffer> s ы
-lnoremap <buffer> t е
-lnoremap <buffer> u г
-lnoremap <buffer> v м
-lnoremap <buffer> w ц
-lnoremap <buffer> x ч
-lnoremap <buffer> y н
-lnoremap <buffer> z я
-lnoremap <buffer> { Х
-lnoremap <buffer> } Ъ
-lnoremap <buffer> ~ Ё
-iabbr <buffer> fork for k in range():F)i
-iabbr <buffer> forj for j in range():F)i
-iabbr <buffer> fori for i in range():F)i
-iabbr <buffer> pr print()i
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=russian-jcukenwin
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=b:#,fb:-
-setlocal commentstring=#\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=^\\s*\\(def\\|class\\)
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'python'
-setlocal filetype=python
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=^\\s*\\(from\\|import\\)
-setlocal includeexpr=substitute(substitute(substitute(v:fname,b:grandparent_match,b:grandparent_sub,''),b:parent_match,b:parent_sub,''),b:child_match,b:child_sub,'g')
-setlocal indentexpr=GetPythonIndent(v:lnum)
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,<:>,=elif,=except
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=python3\ -m\ pydoc
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=python3complete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=ru_yo,en_us
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=.py
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'python'
-setlocal syntax=python
-endif
-setlocal tabstop=4
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 8 - ((2 * winheight(0) + 9) / 19)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 8
-normal! 015|
-wincmd w
-argglobal
-if bufexists("data2.txt") | buffer data2.txt | else | edit data2.txt | endif
-balt data4.txt
-lnoremap <buffer> " Э
-lnoremap <buffer> # №
-lnoremap <buffer> $ ;
-lnoremap <buffer> & ?
-lnoremap <buffer> ' э
-lnoremap <buffer> , б
-lnoremap <buffer> . ю
-lnoremap <buffer> / .
-lnoremap <buffer> : Ж
-lnoremap <buffer> ; ж
-lnoremap <buffer> < Б
-lnoremap <buffer> > Ю
-lnoremap <buffer> ? ,
-lnoremap <buffer> @ "
-lnoremap <buffer> A Ф
-lnoremap <buffer> B И
-lnoremap <buffer> C С
-lnoremap <buffer> D В
-lnoremap <buffer> E У
-lnoremap <buffer> F А
-lnoremap <buffer> G П
-lnoremap <buffer> H Р
-lnoremap <buffer> I Ш
-lnoremap <buffer> J О
-lnoremap <buffer> K Л
-lnoremap <buffer> L Д
-lnoremap <buffer> M Ь
-lnoremap <buffer> N Т
-lnoremap <buffer> O Щ
-lnoremap <buffer> P З
-lnoremap <buffer> Q Й
-lnoremap <buffer> R К
-lnoremap <buffer> S Ы
-lnoremap <buffer> T Е
-lnoremap <buffer> U Г
-lnoremap <buffer> V М
-lnoremap <buffer> W Ц
-lnoremap <buffer> X Ч
-lnoremap <buffer> Y Н
-lnoremap <buffer> Z Я
-lnoremap <buffer> [ х
-lnoremap <buffer> ] ъ
-lnoremap <buffer> ^ :
-lnoremap <buffer> ` ё
-lnoremap <buffer> a ф
-lnoremap <buffer> b и
-lnoremap <buffer> c с
-lnoremap <buffer> d в
-lnoremap <buffer> e у
-lnoremap <buffer> f а
-lnoremap <buffer> g п
-let s:cpo_save=&cpo
-set cpo&vim
-lnoremap <buffer> h р
-lnoremap <buffer> i ш
-lnoremap <buffer> j о
-lnoremap <buffer> k л
-lnoremap <buffer> l д
-lnoremap <buffer> m ь
-lnoremap <buffer> n т
-lnoremap <buffer> o щ
-lnoremap <buffer> p з
-lnoremap <buffer> q й
-lnoremap <buffer> r к
-lnoremap <buffer> s ы
-lnoremap <buffer> t е
-lnoremap <buffer> u г
-lnoremap <buffer> v м
-lnoremap <buffer> w ц
-lnoremap <buffer> x ч
-lnoremap <buffer> y н
-lnoremap <buffer> z я
-lnoremap <buffer> { Х
-lnoremap <buffer> } Ъ
-lnoremap <buffer> ~ Ё
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=russian-jcukenwin
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=fb:-,fb:*,n:>
-setlocal commentstring=
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'text'
-setlocal filetype=text
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=ru_yo,en_us
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'text'
-setlocal syntax=text
-endif
-setlocal tabstop=8
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 9) / 18)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 16
-normal! 05|
-wincmd w
-argglobal
-if bufexists("data4.txt") | buffer data4.txt | else | edit data4.txt | endif
-balt data2.txt
-lnoremap <buffer> " Э
-lnoremap <buffer> # №
-lnoremap <buffer> $ ;
-lnoremap <buffer> & ?
-lnoremap <buffer> ' э
-lnoremap <buffer> , б
-lnoremap <buffer> . ю
-lnoremap <buffer> / .
-lnoremap <buffer> : Ж
-lnoremap <buffer> ; ж
-lnoremap <buffer> < Б
-lnoremap <buffer> > Ю
-lnoremap <buffer> ? ,
-lnoremap <buffer> @ "
-lnoremap <buffer> A Ф
-lnoremap <buffer> B И
-lnoremap <buffer> C С
-lnoremap <buffer> D В
-lnoremap <buffer> E У
-lnoremap <buffer> F А
-lnoremap <buffer> G П
-lnoremap <buffer> H Р
-lnoremap <buffer> I Ш
-lnoremap <buffer> J О
-lnoremap <buffer> K Л
-lnoremap <buffer> L Д
-lnoremap <buffer> M Ь
-lnoremap <buffer> N Т
-lnoremap <buffer> O Щ
-lnoremap <buffer> P З
-lnoremap <buffer> Q Й
-lnoremap <buffer> R К
-lnoremap <buffer> S Ы
-lnoremap <buffer> T Е
-lnoremap <buffer> U Г
-lnoremap <buffer> V М
-lnoremap <buffer> W Ц
-lnoremap <buffer> X Ч
-lnoremap <buffer> Y Н
-lnoremap <buffer> Z Я
-lnoremap <buffer> [ х
-lnoremap <buffer> ] ъ
-lnoremap <buffer> ^ :
-lnoremap <buffer> ` ё
-lnoremap <buffer> a ф
-lnoremap <buffer> b и
-lnoremap <buffer> c с
-lnoremap <buffer> d в
-lnoremap <buffer> e у
-lnoremap <buffer> f а
-lnoremap <buffer> g п
-let s:cpo_save=&cpo
-set cpo&vim
-lnoremap <buffer> h р
-lnoremap <buffer> i ш
-lnoremap <buffer> j о
-lnoremap <buffer> k л
-lnoremap <buffer> l д
-lnoremap <buffer> m ь
-lnoremap <buffer> n т
-lnoremap <buffer> o щ
-lnoremap <buffer> p з
-lnoremap <buffer> q й
-lnoremap <buffer> r к
-lnoremap <buffer> s ы
-lnoremap <buffer> t е
-lnoremap <buffer> u г
-lnoremap <buffer> v м
-lnoremap <buffer> w ц
-lnoremap <buffer> x ч
-lnoremap <buffer> y н
-lnoremap <buffer> z я
-lnoremap <buffer> { Х
-lnoremap <buffer> } Ъ
-lnoremap <buffer> ~ Ё
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=russian-jcukenwin
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=fb:-,fb:*,n:>
-setlocal commentstring=
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'text'
-setlocal filetype=text
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=ru_yo,en_us
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'text'
-setlocal syntax=text
-endif
-setlocal tabstop=8
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 9) / 18)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 16
-normal! 010|
-wincmd w
-argglobal
-if bufexists("data3.txt") | buffer data3.txt | else | edit data3.txt | endif
-balt data8.txt
-lnoremap <buffer> " Э
-lnoremap <buffer> # №
-lnoremap <buffer> $ ;
-lnoremap <buffer> & ?
-lnoremap <buffer> ' э
-lnoremap <buffer> , б
-lnoremap <buffer> . ю
-lnoremap <buffer> / .
-lnoremap <buffer> : Ж
-lnoremap <buffer> ; ж
-lnoremap <buffer> < Б
-lnoremap <buffer> > Ю
-lnoremap <buffer> ? ,
-lnoremap <buffer> @ "
-lnoremap <buffer> A Ф
-lnoremap <buffer> B И
-lnoremap <buffer> C С
-lnoremap <buffer> D В
-lnoremap <buffer> E У
-lnoremap <buffer> F А
-lnoremap <buffer> G П
-lnoremap <buffer> H Р
-lnoremap <buffer> I Ш
-lnoremap <buffer> J О
-lnoremap <buffer> K Л
-lnoremap <buffer> L Д
-lnoremap <buffer> M Ь
-lnoremap <buffer> N Т
-lnoremap <buffer> O Щ
-lnoremap <buffer> P З
-lnoremap <buffer> Q Й
-lnoremap <buffer> R К
-lnoremap <buffer> S Ы
-lnoremap <buffer> T Е
-lnoremap <buffer> U Г
-lnoremap <buffer> V М
-lnoremap <buffer> W Ц
-lnoremap <buffer> X Ч
-lnoremap <buffer> Y Н
-lnoremap <buffer> Z Я
-lnoremap <buffer> [ х
-lnoremap <buffer> ] ъ
-lnoremap <buffer> ^ :
-lnoremap <buffer> ` ё
-lnoremap <buffer> a ф
-lnoremap <buffer> b и
-lnoremap <buffer> c с
-lnoremap <buffer> d в
-lnoremap <buffer> e у
-lnoremap <buffer> f а
-lnoremap <buffer> g п
-let s:cpo_save=&cpo
-set cpo&vim
-lnoremap <buffer> h р
-lnoremap <buffer> i ш
-lnoremap <buffer> j о
-lnoremap <buffer> k л
-lnoremap <buffer> l д
-lnoremap <buffer> m ь
-lnoremap <buffer> n т
-lnoremap <buffer> o щ
-lnoremap <buffer> p з
-lnoremap <buffer> q й
-lnoremap <buffer> r к
-lnoremap <buffer> s ы
-lnoremap <buffer> t е
-lnoremap <buffer> u г
-lnoremap <buffer> v м
-lnoremap <buffer> w ц
-lnoremap <buffer> x ч
-lnoremap <buffer> y н
-lnoremap <buffer> z я
-lnoremap <buffer> { Х
-lnoremap <buffer> } Ъ
-lnoremap <buffer> ~ Ё
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=russian-jcukenwin
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=fb:-,fb:*,n:>
-setlocal commentstring=
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'text'
-setlocal filetype=text
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=ru_yo,en_us
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'text'
-setlocal syntax=text
-endif
-setlocal tabstop=8
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 1
-normal! 0
-wincmd w
-argglobal
-if bufexists("data8.txt") | buffer data8.txt | else | edit data8.txt | endif
-balt data3.txt
-lnoremap <buffer> " Э
-lnoremap <buffer> # №
-lnoremap <buffer> $ ;
-lnoremap <buffer> & ?
-lnoremap <buffer> ' э
-lnoremap <buffer> , б
-lnoremap <buffer> . ю
-lnoremap <buffer> / .
-lnoremap <buffer> : Ж
-lnoremap <buffer> ; ж
-lnoremap <buffer> < Б
-lnoremap <buffer> > Ю
-lnoremap <buffer> ? ,
-lnoremap <buffer> @ "
-lnoremap <buffer> A Ф
-lnoremap <buffer> B И
-lnoremap <buffer> C С
-lnoremap <buffer> D В
-lnoremap <buffer> E У
-lnoremap <buffer> F А
-lnoremap <buffer> G П
-lnoremap <buffer> H Р
-lnoremap <buffer> I Ш
-lnoremap <buffer> J О
-lnoremap <buffer> K Л
-lnoremap <buffer> L Д
-lnoremap <buffer> M Ь
-lnoremap <buffer> N Т
-lnoremap <buffer> O Щ
-lnoremap <buffer> P З
-lnoremap <buffer> Q Й
-lnoremap <buffer> R К
-lnoremap <buffer> S Ы
-lnoremap <buffer> T Е
-lnoremap <buffer> U Г
-lnoremap <buffer> V М
-lnoremap <buffer> W Ц
-lnoremap <buffer> X Ч
-lnoremap <buffer> Y Н
-lnoremap <buffer> Z Я
-lnoremap <buffer> [ х
-lnoremap <buffer> ] ъ
-lnoremap <buffer> ^ :
-lnoremap <buffer> ` ё
-lnoremap <buffer> a ф
-lnoremap <buffer> b и
-lnoremap <buffer> c с
-lnoremap <buffer> d в
-lnoremap <buffer> e у
-lnoremap <buffer> f а
-lnoremap <buffer> g п
-let s:cpo_save=&cpo
-set cpo&vim
-lnoremap <buffer> h р
-lnoremap <buffer> i ш
-lnoremap <buffer> j о
-lnoremap <buffer> k л
-lnoremap <buffer> l д
-lnoremap <buffer> m ь
-lnoremap <buffer> n т
-lnoremap <buffer> o щ
-lnoremap <buffer> p з
-lnoremap <buffer> q й
-lnoremap <buffer> r к
-lnoremap <buffer> s ы
-lnoremap <buffer> t е
-lnoremap <buffer> u г
-lnoremap <buffer> v м
-lnoremap <buffer> w ц
-lnoremap <buffer> x ч
-lnoremap <buffer> y н
-lnoremap <buffer> z я
-lnoremap <buffer> { Х
-lnoremap <buffer> } Ъ
-lnoremap <buffer> ~ Ё
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=russian-jcukenwin
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal balloonexpr=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=fb:-,fb:*,n:>
-setlocal commentstring=
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal cursorlineopt=both
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'text'
-setlocal filetype=text
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-setlocal nolist
-setlocal listchars=
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal scrolloff=-1
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal showbreak=
-setlocal sidescrolloff=-1
-setlocal signcolumn=auto
-setlocal smartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=ru_yo,en_us
-setlocal spelloptions=
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'text'
-setlocal syntax=text
-endif
-setlocal tabstop=8
-setlocal tagcase=
-setlocal tagfunc=
-setlocal tags=
-setlocal termwinkey=
-setlocal termwinscroll=10000
-setlocal termwinsize=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal thesaurusfunc=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal varsofttabstop=
-setlocal vartabstop=
-setlocal virtualedit=
-setlocal wincolor=
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 38871 - ((2 * winheight(0) + 19) / 38)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 38871
-normal! 0
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 53 + 86) / 173)
-exe '2resize ' . ((&lines * 31 + 20) / 41)
-exe 'vert 2resize ' . ((&columns * 88 + 86) / 173)
-exe '3resize ' . ((&lines * 6 + 20) / 41)
-exe 'vert 3resize ' . ((&columns * 88 + 86) / 173)
-exe '4resize ' . ((&lines * 19 + 20) / 41)
-exe 'vert 4resize ' . ((&columns * 11 + 86) / 173)
-exe '5resize ' . ((&lines * 18 + 20) / 41)
-exe 'vert 5resize ' . ((&columns * 3 + 86) / 173)
-exe '6resize ' . ((&lines * 18 + 20) / 41)
-exe 'vert 6resize ' . ((&columns * 7 + 86) / 173)
-exe 'vert 7resize ' . ((&columns * 1 + 86) / 173)
-exe 'vert 8resize ' . ((&columns * 16 + 86) / 173)
-tabnext 2
+exe 'vert 1resize ' . ((&columns * 91 + 86) / 173)
+exe 'vert 2resize ' . ((&columns * 81 + 86) / 173)
+tabnext 1
 set stal=1
-badd +135 alg8v2.cpp
+badd +1 alg8v2.cpp
 badd +106 alg8v2.py
-badd +20 dataGeneratorv2.py
-badd +16 ~/alg/alg7/dataGeneratorv2.py
-badd +0 data2.txt
-badd +0 data3.txt
-badd +0 alg8-fast-merge-nostruct.cpp
-badd +0 data4.txt
-badd +1 dataGenerator.py
 badd +1 alg8-fast-merge-half-path-depth.cpp
-badd +0 data8.txt
-badd +54 alg8.py
-badd +1 alg8-fast-merge.cpp
 badd +1 alg8-fast-merge-half-path.cpp
+badd +1 alg8-fast-merge.cpp
+badd +38879 data8.txt
+badd +24 alg8-fast-merge-nostruct.cpp
+badd +14 dataGeneratorv2.py
+badd +0 dataGenerator.py
+badd +17 data2.txt
+badd +28 data4.txt
+badd +0 data3.txt
+badd +16 ~/alg/alg7/dataGeneratorv2.py
+badd +54 alg8.py
+badd +0 data6.txt
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
